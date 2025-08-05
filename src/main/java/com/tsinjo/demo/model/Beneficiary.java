@@ -1,12 +1,19 @@
 package com.tsinjo.demo.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "beneficiary")
 public class Beneficiary {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(nullable = false)
     private String fullName;
+    @Column(nullable = false)
     private String email;
 
-    public Beneficiary(long id, String fullName, String email) {
-        this.id = id;
+    public Beneficiary(String fullName, String email) {
         this.fullName = fullName;
         this.email = email;
     }

@@ -1,13 +1,22 @@
 package com.tsinjo.demo.model;
 
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "payment")
 public class Payment {
+    @Id
     private String id;
+    @Column(nullable= false)
     private LocalDateTime paymentDate;
+    @Column(nullable = false)
     private BigDecimal amount;
+    @Column(nullable = false)
     private String paymentMethod;
+    @Enumerated(EnumType.STRING)
     private PaymentStatus status;
 
     public Payment(String id, LocalDateTime paymentDate, BigDecimal amount, String paymentMethod, PaymentStatus status) {
@@ -15,8 +24,9 @@ public class Payment {
         this.paymentDate = paymentDate;
         this.amount = amount;
         this.paymentMethod = paymentMethod;
-        this.status = status;
+        this.status = PaymentStatus.VERIFYING;
     }
+
 
     public String getId() {
         return id;
