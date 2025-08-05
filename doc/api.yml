@@ -1,0 +1,14 @@
+vola:
+  api:
+    url: https://42cwka3n4ifcp7ufheyrpmph240iuaxo.lambda-url.eu-west-3.on.aws
+    key: ${VOLA_API_KEY:your-api-key-here}
+
+spring:
+  task:
+    execution:
+      pool:
+        core-size: 2
+        max-size: 2
+    scheduling:
+      pool:
+        size: 2
