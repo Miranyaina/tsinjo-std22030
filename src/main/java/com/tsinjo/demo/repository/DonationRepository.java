@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface DonationRepository extends JpaRepository<Donation, Long> {
-    @Query("SELECT d FROM Donation d WHERE d.payment.status = 'SUCCEEDED' ORDER BY d.createdAt DESC")
+    @Query("SELECT d FROM Donation d JOIN d.payment p WHERE p.status = 'SUCCEEDED' ORDER BY d.createdAt DESC")
     List<Donation> findAllSuccessfulOrderByCreatedAtDesc();
 }
